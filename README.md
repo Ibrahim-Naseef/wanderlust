@@ -55,10 +55,7 @@ WanderLust is a simple MERN travel blog website ✈ This project is aimed to hel
 
 ### Pre-requisites to implement this project:
 #
-- Root user access
-```bash
-sudo su
-```
+
 > [!Note]
 > This project will be implemented on North California region (us-west-1).
 
@@ -73,11 +70,11 @@ sudo su
 Install & Configure Docker by using below command, "NewGrp docker" will refresh the group config hence no need to restart the EC2 machine.
 
 ```bash
-apt-get update
+sudo apt-get update
 ```
 ```bash
-apt-get install docker.io -y
-usermod -aG docker ubuntu && newgrp docker
+sudo apt-get install docker.io -y
+sudo usermod -aG docker ubuntu && newgrp docker
 ```
 #
 - <b id="Jenkins">Install and configure Jenkins (Master machine)</b>
@@ -126,21 +123,21 @@ sudo apt-get install jenkins -y
   - <b>Create EKS Cluster (Master machine)</b>
   ```bash
   eksctl create cluster --name=wanderlust \
-                      --region=us-west-1 \
+                      --region=us-east-2 \
                       --version=1.30 \
                       --without-nodegroup
   ```
   - <b>Associate IAM OIDC Provider (Master machine)</b>
   ```bash
   eksctl utils associate-iam-oidc-provider \
-    --region us-west-1 \
+    --region us-east-2 \
     --cluster wanderlust \
     --approve
   ```
   - <b>Create Nodegroup (Master machine)</b>
   ```bash
   eksctl create nodegroup --cluster=wanderlust \
-                       --region=us-west-1 \
+                       --region=us-east-2 \
                        --name=wanderlust \
                        --node-type=t2.large \
                        --nodes=2 \
@@ -202,8 +199,8 @@ sudo apt-get install jenkins -y
 - <b id="docker">Install docker (Jenkins Worker)</b>
 
 ```bash
-apt install docker.io -y
-usermod -aG docker ubuntu && newgrp docker
+sudo apt install docker.io -y
+sudo usermod -aG docker ubuntu && newgrp docker
 ```
 #
 - <b id="Sonar">Install and configure SonarQube (Master machine)</b>

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTANCE_ID="i-0ce861f5c11dcfbc6"
+INSTANCE_ID="i-04a0bc2c60be79498"
 
 ipv4_address=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
 

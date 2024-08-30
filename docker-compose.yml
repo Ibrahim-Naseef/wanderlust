@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mongodb:
-    container_name: mongo
+    container_name: mongo-service
     image: mongo:latest
     volumes:
       - ./backend/data:/data
@@ -14,7 +14,7 @@ services:
     env_file:
       - ./backend/.env.docker
     ports:
-      - "5000:5000"
+      - "31100:8080"
     depends_on:
       - mongodb
 
@@ -27,7 +27,7 @@ services:
       - "5173:5173"
 
   redis:
-    container_name: redis
+    container_name: redis-service
     restart: unless-stopped
     image: redis:7.0.5-alpine 
     expose:

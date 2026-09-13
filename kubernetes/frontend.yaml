@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: naseefcoder/wanderlust-frontend-beta:v3.0
+          image: naseefcoder/wanderlust-frontend-beta:v4.0
           ports:
             - containerPort: 5173
 ---
